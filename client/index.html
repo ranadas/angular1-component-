@@ -11,8 +11,14 @@
 </head>
 <body ng-app="gtcAngular">
     <h1> {{1+1}}</h1>
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+        <div ui-view></div>
+    </div>
 
     <script type="application/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="application/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="application/javascript" src="js/ang-app.js"></script>
 </body>
 </html>

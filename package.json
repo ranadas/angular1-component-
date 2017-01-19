@@ -4,8 +4,12 @@
   "description": "Sample angular1x application",
   "main": "index.js",
   "scripts": {
+    "postinstall" : "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rana Das",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.0"
+  }
 }

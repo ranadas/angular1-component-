@@ -14,11 +14,15 @@ var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider) {
         })
         .state('page2', {
             url: '/page2',
-            templateUrl: 'partials/page2.html'
+            templateUrl: 'partials/page2.html',
+            controller: Page2Controller,
+            controllerAs: 'vm'
         })
         .state('page3', {
             url: '/page3',
-            templateUrl: 'partials/page3.html'
+            templateUrl: 'partials/page3.html',
+            controller: Page3Controller,
+            controllerAs: 'vm'
         })
     ;
 };
@@ -26,8 +30,39 @@ routesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 gtcAngularApp.config(routesConfig);
 
 
-function Page1Controller() {
+function Page1Controller($location) {
     console.log('Page1 Controller ');
     var self = this;
     self.pageTitle = "Page One";
+
+    self.goToLink = function (url) {
+        console.log('Navigating to '+url);
+        $location.path(url);
+    }
 }
+Page1Controller.$inject = ['$location'];
+
+
+function Page2Controller($location) {
+    console.log('Page2  Controller ');
+    var self = this;
+    self.pageTitle = "Page Two!!";
+
+    self.goToLink = function (url) {
+        console.log('Navigating to '+url);
+        $location.path(url);
+    }
+}
+Page2Controller.$inject = ['$location'];
+
+function Page3Controller($location) {
+    console.log('Page3  Controller ');
+    var self = this;
+    self.pageTitle = "Page Three!!";
+
+    self.goToLink = function (url) {
+        console.log('Navigating to '+url);
+        $location.path(url);
+    }
+}
+Page3Controller.$inject = ['$location'];

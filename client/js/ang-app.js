@@ -2,7 +2,7 @@
 
 var gtcAngularApp = angular.module('gtcAngular', ['ui.router']);
 
-var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider) {
+var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('page1');
 
     $stateProvider
@@ -25,8 +25,11 @@ var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider) {
             controllerAs: 'vm'
         })
     ;
+
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 };
-routesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+routesConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 gtcAngularApp.config(routesConfig);
 
 

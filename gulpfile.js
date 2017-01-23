@@ -75,6 +75,11 @@ gulp.task('webdriver_update', webdriver_update);
 // NOTE: This is not needed if you reference the seleniumServerJar in your protractor.conf.js
 gulp.task('webdriver_standalone', webdriver_standalone);
 
+gulp.task('run-all', ['webdriver_standalone', 'live-server', 'test-protractor'], function (callback) {
+    log(chalk.blue.underline.bold("Both webdriver & live-server & then run protractor scripts." ));
+});
+
+
 gulp.task('test-protractor', function (cb) {
     gulp.src('./specs/prot/*-spec.js')
         .pipe(protractor({
@@ -85,8 +90,4 @@ gulp.task('test-protractor', function (cb) {
             throw e;
         })
         .on('end', cb);
-});
-
-gulp.task('run-all', ['webdriver_standalone', 'live-server', 'test-protractor'], function (callback) {
-    log(chalk.blue.underline.bold("Both webdriver & live-server & then run protractor scripts." ));
 });

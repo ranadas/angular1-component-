@@ -1,8 +1,10 @@
 //http://omarfouad.com/blog/2015/03/21/advanced-angularjs-structure-with-gulp-node-and-browserify/
-var gulp = require('gulp');
-//var sass = require('gulp-ruby-sass');
-var connect = require('gulp-connect');
-var modRewrite = require('connect-modrewrite');
+var gulp        = require('gulp');
+var connect     = require('gulp-connect');
+var modRewrite  = require('connect-modrewrite');
+var protractor  = require("gulp-protractor").protractor
+const chalk     = require('chalk');
+const log       = console.log;
 
 gulp.task('live-server', function () {
     connect.server({
@@ -39,3 +41,41 @@ gulp.task('watch', function () {
 
 //livereload html, js etc.
 gulp.task('default', ['live-server','html', 'js', 'watch']);
+
+var protractorOptions = {
+    configFile: 'conf.js'
+};
+gulp.task('e2e', ['webdriver_standalone', 'live-server','html', 'js', 'watch'], function(cb) {
+    gulp.src('specs/*spec.js')
+        .pipe(protractor(protractorOptions))
+        .on('error', function(e) {
+            // stop webserver
+            connect.serverClose();
+            // print test results
+            console.log(e);
+        })
+        .on('end', function(){
+            // stop webserver
+            connect.serverClose();
+            cb();
+        });
+});
+
+/** TODO: e2e  **/
+// Start a standalone server
+var webdriver_standalone = require('gulp-protractor').webdriver_standalone;
+
+// Download and update the selenium driver
+var webdriver_update = require('gulp-protractor').webdriver_update;
+
+// Downloads the selenium webdriver
+gulp.task('webdriver_update', webdriver_update);
+
+// Start the standalone selenium server
+// NOTE: This is not needed if you reference the seleniumServerJar in your protractor.conf.js
+gulp.task('webdriver_standalone', webdriver_standalone);
+
+
+gulp.task('p-test', ['webdriver_standalone', 'live-server'], function (callback) {
+    log(chalk.blue.underline.bold("Both webdriver & live-server" ));
+});

@@ -1,6 +1,6 @@
 'use strict';
 
-var gtcAngularApp = angular.module('gtcAngular', ['ui.router']);
+var gtcAngularApp = angular.module('gtcAngular', ['ui.router', 'gtcAngServicesModule']);
 
 var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('page1');
@@ -58,14 +58,20 @@ function Page2Controller($location) {
 }
 Page2Controller.$inject = ['$location'];
 
-function Page3Controller($location) {
+function Page3Controller($location, service1) {
     console.log('Page3  Controller ');
     var self = this;
     self.pageTitle = "Page Three!!";
 
     self.goToLink = function (url) {
         console.log('Navigating to '+url);
+        service1.login();
         $location.path(url);
     }
 }
-Page3Controller.$inject = ['$location'];
+Page3Controller.$inject = ['$location', 'aTypicalService'];
+
+gtcAngularApp.run(['$rootScope', function ($scope) {
+    $scope.$on("$routeChangeSuccess", function (scope, next, current) {
+    });
+}]);

@@ -15,3 +15,13 @@
 13.    Added navition between pages, button clicks or a tags can be mapped to a state or url.
 
 
+14. to bootstrap & open the application, we could just run live-server.
+15. Live server
+
+to run functional tests:
+1. window1 : webdriver-manager start
+2. window2 : gulp ( to run the gulp web server)
+3. Finally protractor  conf.js to run e2e tests
+
+or
+run gulp -test and then run  protractor  conf.js

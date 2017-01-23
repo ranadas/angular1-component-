@@ -1,6 +1,6 @@
 'use strict';
 
-var gtcAngularApp = angular.module('gtcAngular', ['ui.router', 'gtcAngServicesModule']);
+var gtcAngularApp = angular.module('gtcAngular', ['ui.router', 'gtcAngServicesModule', 'validation', 'validation.rule']);
 
 var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('page1');

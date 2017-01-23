@@ -3,4 +3,48 @@
         {{vm.pageTitle}}
     </p>
     <button ng-click="vm.goToLink('/page3')" class="btn btn-default btn-success"> Go to Page3</button>
+
+
+    <div class="page-header">
+        <form name="Form" id="form1">
+            <fieldset>
+                <legend>Form ($watch)</legend>
+                <div style="margin-bottom:20px;">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control"
+                           name="emailWatch"
+                           ng-model="form.email"
+                           validator="email"
+                           email-error-message="Email is not a valid email"
+                           email-success-message=""
+                           message-id="emailWatch"
+                           id="email"/>
+                    <span id="emailWatch"></span>
+
+
+                    <label for="number">Number</label>
+                    <input type="text" class="form-control"
+                           name="numberWatch"
+                           ng-model="form.number"
+                           validator="number"
+                           email-error-message="Error Number"
+                           email-success-message="Good Number",
+                           message-id="numberWatch"
+                           id="number"/>
+                    <span id="numberWatch"></span>
+                </div>
+
+                <div class="btn-group" role="group">
+                    <button class="btn btn-primary" ng-click="showcodewatch = !showcodewatch">
+                        <span ng-hide="showcodewatch">Show Code</span>
+                        <span ng-show="showcodewatch">Hide Code</span>
+                    </button>
+                </div>
+
+                <!--<pre ng-show="showcodewatch"><code class="html">&lt;!&#45;&#45; default valid-method is watch &ndash;&gt;-->
+                    <!--&lt;input type="text" name="emailBlur" ng-model="form.email" validator="email"/></code></pre>-->
+            </fieldset>
+        </form>
+    </div>
+
 </div>

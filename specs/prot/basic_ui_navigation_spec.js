@@ -7,13 +7,13 @@ describe('tests button click in order to navigate from page1, page2 & page3', fu
 
     it('should activate ng-click on pages[1-3]  and asserting the label.', function () {
         element(by.buttonText('Go to Page2')).click();
-        expect(element(by.binding('vm.pageTitle')).getText()).toBe('Page Two!!');
+        expect(element(by.binding('vm.pageTitle')).getText()).toBe('This is Page Two!!');
 
         element(by.buttonText('Go to Page3')).click();
-        expect(element(by.binding('vm.pageTitle')).getText()).toBe('Page Three!!');
+        expect(element(by.binding('vm.pageTitle')).getText()).toBe('This is Page Three!!');
         
         element(by.buttonText('Back to Page1')).click();
-        expect(element(by.binding('vm.pageTitle')).getText()).toBe('Page One');
+        expect(element(by.binding('vm.pageTitle')).getText()).toBe('This is Page One');
     });
 });
 
@@ -25,7 +25,7 @@ describe('tests button click in order to navigate from page2 to page3', function
 
     it('should activate ng-click on pages[1-3]  and asserting the label.', function () {
         element(by.buttonText('Go to Page3')).click();
-        expect(element(by.binding('vm.pageTitle')).getText()).toBe('Page Three!!');
+        expect(element(by.binding('vm.pageTitle')).getText()).toBe('This is Page Three!!');
     });
 });
 
@@ -36,6 +36,6 @@ describe('tests button click in order to navigate from page2 to page3', function
 
     it('should activate ng-click on pages[1-3]  and asserting the label.', function () {
         element(by.buttonText('Back to Page1')).click();
-        expect(element(by.binding('vm.pageTitle')).getText()).toBe('Page One');
+        expect(element(by.binding('vm.pageTitle')).getText()).toBe('This is Page One');
     });
 });

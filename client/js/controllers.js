@@ -18,6 +18,7 @@ function Page2Controller($location) {
     console.log('Page2  Controller ');
     var self = this;
     self.pageTitle = "Page Two!!";
+    self.errorMessage = "!";
     self.passwordStrength = /^[a-zA-Z]\w{3,14}$/;
 
     self.goToLink = function (url) {
@@ -25,9 +26,12 @@ function Page2Controller($location) {
         $location.path(url);
     };
 
-    self.submitForm = function() {
+    self.submitForm = function(isValid) {
         console.log('User clicked submit with :', self.user);
-        $location.path('/page3');
+        if (isValid) {
+            console.log('Submit form success, navigating to page3.');
+            $location.path('/page3');
+        }
     }
 }
 Page2Controller.$inject = ['$location'];

@@ -3,6 +3,9 @@ exports.config = {
     specs: [
         'specs/prot/*_spec.js'
     ],
+    exclude: [
+        ''
+    ],
     capabilities: {
         'browserName': 'chrome'
     },
@@ -10,7 +13,7 @@ exports.config = {
     framework: 'jasmine2',
     jasmineNodeOpts: {
         onComplete: null,
-        isVerbose: true,
+        isVerbose: false,
         showColors: true,
         includeStackTrace: true,
         directConnect: true,

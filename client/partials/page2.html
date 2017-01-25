@@ -6,6 +6,31 @@
         </h1>
         <button ng-click="vm.goToLink('/page3')" class="btn btn-default btn-success"> Go to Page3</button>
     </div>
-</div>
 
+    <form name='page2form' ng-submit="vm.submitForm()" novalidate>
+        <div class="form-group">
+            <input type="text"
+                   ng-model="vm.user.username"
+                   required
+                   ng-minlength="3"
+                   ng-maxlength="12"
+                   class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="password"
+                   ng-model="vm.user.password"
+                   required
+                   ng-pattern=vm.passwordStrength
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <!--<button ng-click="vm.submitForm()" class=" btn btn-primary">Submit Btn</button>-->
+            <input type="submit"
+                   value="Submit"
+                   class=" btn btn-primary"
+                   ng-disabled="page2form.$invalid">
+        </div>
+
+    </form>
 </div>

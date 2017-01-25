@@ -35,7 +35,7 @@
                ng-minlength="1"
                ng-maxlength="10"
                ng-pattern="vm.searchPattern"
-               ng-model="home.search"
+               ng-model="vm.search"
                id="searchTerm" placeholder="Food or trees">
         <button id="searchButton"
                 ng-disabled="search.searchTerm.$invalid"
@@ -44,12 +44,8 @@
                 type="button">Search
         </button>
         <div ng-messages="search.searchTerm.$error">
-            <div class="alert alert-warning" ng-message="maxlength">
-                Cannot Exceed 10 characters
-            </div>
-            <div class="alert alert-warning" ng-message="pattern">
-                Numbers and Letters Only
-            </div>
+            <div class="alert alert-warning" ng-message="maxlength">Cannot Exceed 10 characters</div>
+            <div class="alert alert-warning" ng-message="pattern">Numbers and Letters Only</div>
         </div>
     </form>
 </div>

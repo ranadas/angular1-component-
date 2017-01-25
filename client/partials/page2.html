@@ -6,30 +6,44 @@
         </h1>
         <button ng-click="vm.goToLink('/page3')" class="btn btn-default btn-success"> Go to Page3</button>
     </div>
-
-    <form name='page2form' ng-submit="vm.submitForm()" novalidate>
-        <div class="form-group">
+    {{vm.errorMessage}}
+    <form name='page2form' ng-submit="vm.submitForm(page2form.$valid)" novalidate>
+        <!-- USERNAME -->
+        <div class="form-group" ng-class="{ 'has-error' : page2form.uname.$invalid && !page2form.uname.$pristine }">
+            <label>Username</label>
             <input type="text"
+                   name="uname"
                    ng-model="vm.user.username"
                    required
                    ng-minlength="3"
-                   ng-maxlength="12"
-                   class="form-control">
-        </div>
+                   ng-maxlength="8"
+                   class="form-control"/>
 
-        <div class="form-group">
+            <p id="nameError" ng-show="page2form.uname.$invalid && !page2form.uname.$pristine && page2form.uname.$error.minlength"
+               class="help-block">Enter a valid username.</p>
+        </div>
+        <!-- PASSWORD -->
+        <div class="form-group" ng-class="{ 'has-error' : !page2form.pwd.$pristine && page2form.pwd.$invalid}">
+            <label>Password</label>
             <input type="password"
+                   name="pwd"
                    ng-model="vm.user.password"
                    required
                    ng-pattern=vm.passwordStrength
-                   class="form-control">
+                   class="form-control"/>
+            <p id="pwdError" ng-show="!page2form.pwd.$pristine && page2form.pwd.$invalid"
+                   class="help-block">Enter a valid password.</p>
         </div>
+        <!-- EMAIL -->
+        <div class="form-group" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" ng-model="vm.user.email">
+            <p ng-show="page2form.email.$invalid && !page2form.email.$pristine" class="help-block">Enter a valid email.</p>
+        </div>
+        <br/><br/>
         <div class="form-group">
             <!--<button ng-click="vm.submitForm()" class=" btn btn-primary">Submit Btn</button>-->
-            <input type="submit"
-                   value="Submit"
-                   class=" btn btn-primary"
-                   ng-disabled="page2form.$invalid">
+            <input type="submit" value="Submit" class=" btn btn-primary" ng-disabled="page2form.$invalid">
         </div>
 
     </form>

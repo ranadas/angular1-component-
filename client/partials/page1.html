@@ -1,6 +1,9 @@
 <div class="container">
-    <p>
-        {{vm.pageTitle}}
-    </p>
-    <button ng-click="vm.goToLink('/page2')" class="btn btn-default btn-danger"> Go to Page2</button>
+    <div class="page-header">
+        <h1>
+            <small>This is</small>
+            {{vm.pageTitle}}
+        </h1>
+        <button ng-click="vm.goToLink('/page2')" class="btn btn-default btn-danger"> Go to Page2</button>
+    </div>
 </div>

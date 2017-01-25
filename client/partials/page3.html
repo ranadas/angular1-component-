@@ -17,15 +17,39 @@
                    ng-maxlength="8"
                    required class="form-control"/>
 
-            <div ng-messages="!userForm.username.$pristine && userForm.username.$error">
-                <p ng-message="minlength">Your name is too short.</p>
-                <p ng-message="maxlength">Your name is too long.</p>
-                <p ng-message="required">Your name is required.</p>
+            <div ng-messages="!userForm.username.$pristine && userForm.username.$error" class="help-block">
+                <div ng-messages-include="partials/form_ng_messages.html"></div>
             </div>
         </div>
 
         <div class="form-group">
             <input type="submit" value="Submit" class=" btn btn-primary" ng-disabled="userForm.$invalid">
+        </div>
+    </form>
+
+    <form name="search" class="form-inline">
+        <label for="searchTerm">Search: </label>
+        <input type="text"
+               class="form-control inline"
+               name="searchTerm"
+               ng-minlength="1"
+               ng-maxlength="10"
+               ng-pattern="vm.searchPattern"
+               ng-model="home.search"
+               id="searchTerm" placeholder="Food or trees">
+        <button id="searchButton"
+                ng-disabled="search.searchTerm.$invalid"
+                class="btn btn-success inline"
+                ng-click="vm.makeSearch()"
+                type="button">Search
+        </button>
+        <div ng-messages="search.searchTerm.$error">
+            <div class="alert alert-warning" ng-message="maxlength">
+                Cannot Exceed 10 characters
+            </div>
+            <div class="alert alert-warning" ng-message="pattern">
+                Numbers and Letters Only
+            </div>
         </div>
     </form>
 </div>

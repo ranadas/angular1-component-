@@ -1,6 +1,6 @@
 'use strict';
 
-var gtcAngularApp = angular.module('gtcAngular', ['ui.router', 'gtcAngServicesModule']);
+var gtcAngularApp = angular.module('gtcAngular', ['ui.router', 'gtcAngServicesModule', 'ngMessages']);
 
 gtcAngularApp.config(routesConfig);
 

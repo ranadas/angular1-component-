@@ -7,4 +7,25 @@
         <button ng-click="vm.goToLink('/page1')" class="btn btn-default btn-info"> Back to Page1</button>
         <button ng-click="vm.goToLink('/page2')" class="btn btn-default btn-warning"> Back to Page2</button>
     </div>
+
+    <form name="userForm" ng-submit="vm.submitForm(userForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine }">
+            <input type="text"
+                   name="username"
+                   ng-model="vm.user.username"
+                   ng-minlength="3"
+                   ng-maxlength="8"
+                   required class="form-control"/>
+
+            <div ng-messages="!userForm.username.$pristine && userForm.username.$error">
+                <p ng-message="minlength">Your name is too short.</p>
+                <p ng-message="maxlength">Your name is too long.</p>
+                <p ng-message="required">Your name is required.</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class=" btn btn-primary" ng-disabled="userForm.$invalid">
+        </div>
+    </form>
 </div>

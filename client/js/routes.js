@@ -22,6 +22,13 @@ var routesConfig = function RoutesConfig($stateProvider, $urlRouterProvider, $lo
             controller: Page3Controller,
             controllerAs: 'vm'
         })
+
+        .state('dlog', {
+            url: '/dlog',
+            templateUrl: 'partials/dlog.html',
+            controller: DialogPageController,
+            controllerAs: 'vm'
+        })
     ;
 
     // use the HTML5 History API

@@ -9,7 +9,25 @@ function Page1Controller($location) {
     self.goToLink = function (url) {
         console.log('Navigating to '+url);
         $location.path(url);
-    }
+    };
+    self.saveApplication = function () {
+        console.log('Saving new Application with ' + JSON.stringify(self.choiceSet));
+
+    };
+
+    self.choiceSet = {choices: []};
+    self.quest = {};
+    self.choiceSet.choices = [];
+    self.addNewChoice = function () {
+        self.choiceSet.choices.push('');
+    };
+
+    self.removeChoice = function (z) {
+        //var lastItem = $scope.choiceSet.choices.length - 1;
+        self.choiceSet.choices.splice(z,1);
+    };
+
+
 }
 Page1Controller.$inject = ['$location'];
 
@@ -60,3 +78,29 @@ function Page3Controller($location, service1) {
     }
 }
 Page3Controller.$inject = ['$location', 'aTypicalService'];
+
+function DialogPageController($location, ngDialog, $scope) {
+    console.log('DialogPage  Controller ');
+    var self = this;
+    self.pageTitle = "ngDialog!!";
+    self.appl = {name: "rana", ph: '098765421', ad: '39 wellington'};
+    self.near = ['one', 'two', 'three'];
+    $scope.value = self.appl;
+    $scope.value2 = self.near;
+    self.clickToOpen = function() {
+        ngDialog.open({
+            template: 'partials/popupTmpl.html',
+            className: 'ngdialog-theme-default',
+            //controller: DialogController,
+            //controllerAs: "vm",
+            scope : $scope
+        });
+    }
+}
+DialogPageController.$inject = ['$location', 'ngDialog', '$scope'];
+
+
+//function DialogController($location) {
+//    console.log('Dialog Controller ');
+//}
+//DialogController.$inject = ['$location'];

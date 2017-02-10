@@ -10,7 +10,7 @@ gulp.task('live-server', function () {
     connect.server({
         root: 'client/',
         livereload: true,
-        port: 8080,
+        port: 8088,
         middleware: function () {
             return [
                 modRewrite([

@@ -25,3 +25,5 @@ to run functional tests:
 
 or
 run gulp -test and then run  protractor  conf.js
+
+-- adding components.

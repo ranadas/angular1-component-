@@ -1,7 +1,7 @@
 {
-  "name": "gtc-angular-skel",
+  "name": "angular-component-tutorial",
   "version": "1.0.0",
-  "description": "Sample angular1x application",
+  "description": "angular1x application with components:",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install",

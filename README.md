@@ -27,3 +27,14 @@ or
 run gulp -test and then run  protractor  conf.js
 
 -- adding components.
+
+
+https://toddmotto.com/exploring-the-angular-1-5-component-method/
+http://jsconfig.com/component-angularjs-1-5-beginner-guide/
+https://tests4geeks.com/build-angular-1-5-component-angularjs-tutorial/
+https://scotch.io/tutorials/how-to-use-angular-1-5s-component-method
+
+http://blog.grossman.io/angular-1-component-based-architecture-2/
+https://github.com/scopsy/goatlove-ng-component-example
+
+https://thinkster.io/angularjs-es6-tutorial
